@@ -90,5 +90,8 @@ group :development, :test do
   gem "meta_request" # to support https://github.com/dejan/rails_panel
   gem "minitest-reporters"
 
+  gem 'rspec-rails', '~> 3.4'
+  gem 'factory_girl_rails', '~> 4.0' # for fixture replacement
+
   gem "rake"
 end
