@@ -9,9 +9,33 @@ Minitest::Reporters.use!(
   Minitest.backtrace_filter
 )
 
+# TODO: factor out shared code
 class ActiveSupport::TestCase
-  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
+  include FactoryGirl::Syntax::Methods
+
   fixtures :all
 
-  # Add more helper methods to be used by all tests here...
+  def setup
+    ActionController::Base.allow_forgery_protection = false
+    # note: FactoryGirl will encrypt password but only if passed
+    @unconfirmed_user = create(:unconfirmed_user, :password => 'password')
+  end
+
+  def logger
+    Rails.logger
+  end
+end
+
+class ActionDispatch::IntegrationTest
+  include FactoryGirl::Syntax::Methods
+
+  def setup
+    ActionController::Base.allow_forgery_protection = false
+    # note: FactoryGirl will encrypt password but only if passed
+    @unconfirmed_user = create(:unconfirmed_user, :password => 'password')
+  end
+
+  def logger
+    Rails.logger
+  end
 end
