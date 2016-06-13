@@ -92,6 +92,7 @@ group :development, :test do
 
   gem 'rspec-rails', '~> 3.4'
   gem 'factory_girl_rails', '~> 4.0' # for fixture replacement
-
+  gem 'capybara' # for browser integration testing
+  gem 'database_cleaner' # helps database transactions work with browser integration tests that might have multiple threads
   gem "rake"
 end
