@@ -1,4 +1,5 @@
 .*
+!.rspec
 docker-compose.yml
 log
 tmp
