@@ -16,7 +16,7 @@ web:
     - TEST_DATABASE_URL=mysql2://fieldpapers:fieldpapers@db/fieldpapers_test
     - BASE_URL=http://localhost:3000
     # needs to be publicly addressable
-    - TILE_BASE_URL=http://docker.local:8080
+    - TILE_BASE_URL=http://localhost:8080
     - TASK_BASE_URL=http://localhost:8081
   hostname: fieldpapers
   links:
@@ -34,6 +34,7 @@ web:
     - ./locale:/app/locale
     - ./public:/app/public
     - ./test:/app/test
+    - ./spec:/app/spec
 tasks:
   image: quay.io/fieldpapers/tasks:v0.12.0
   env_file: .env
